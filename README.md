@@ -16,7 +16,7 @@ CRUD Roles
 
 - [Laravel-permission](https://spatie.be/index.php/docs/laravel-permission/v6/introduction).
 - [Iconos](https://heroicons.com/).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Alertas notificaciones [Documentacion](https://sweetalert2.github.io/).
 - Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
 - Database agnostic [schema migrations](https://laravel.com/docs/migrations).
 - [Robust background job processing](https://laravel.com/docs/queues).
