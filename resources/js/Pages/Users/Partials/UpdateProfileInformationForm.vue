@@ -3,6 +3,8 @@ import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
+import MultiSelect from 'primevue/multiselect';
+
 import { Link, useForm, usePage } from '@inertiajs/vue3';
 import { inject } from 'vue';
 const swal = inject('$swal');
@@ -66,14 +68,14 @@ const form = useForm({
                     autocomplete="username" />
                 <InputError class="mt-2" :message="form.errors.email" />
             </div>
+
             <div>
                 <InputLabel for="roles" value="Roles" />
 
-                <select multiple v-model="form.roles_user">
-                    <option v-for="role in roles" :key="role" :value="role" :selected="form.roles_user.includes(role)">
-                        {{ role }}
-                    </option>
-                </select>
+                <div class="card flex justify-content-center">
+                    <MultiSelect id="roles" v-model="form.roles_user" display="chip" :options="Object.values(roles)"
+                        placeholder="Select Cities" :maxSelectedLabels="3" class="w-full md:w-20rem" />
+                </div>
                 <InputError class="mt-2" :message="form.errors.roles_user" />
             </div>
             <div>

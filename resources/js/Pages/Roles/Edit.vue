@@ -25,7 +25,7 @@ const form = useForm({
 
 const submit = () => {
     form.patch(route('roles.update', props.role.id), {
-        onFinish: () => swal({
+        onSuccess: () => swal({
             title: "Registro Actualizado",
             text: "El rol se ha actualizado exitosamente",
             icon: "success"

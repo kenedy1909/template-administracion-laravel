@@ -23,7 +23,7 @@ class UserController extends Controller
                     ->OrWhere('email','like','%'.$search.'%');
                 })->when(RequestFacade::input('estado_users'), function ($query, $estado) {
                     $query->where('estado', $estado);
-                })->paginate(5)
+                })->with('roles')->paginate(5)
                 ->withQueryString(),
                 'filters' => RequestFacade::only(['search'])
         ]);

@@ -19,6 +19,7 @@
     },
     "dependencies": {
         "@heroicons/vue": "^2.1.1",
+        "primevue": "^3.48.1",
         "vue-sweetalert2": "^5.0.5"
     }
 }

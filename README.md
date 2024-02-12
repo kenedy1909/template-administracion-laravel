@@ -16,8 +16,8 @@ CRUD Roles
 
 - [Laravel-permission](https://spatie.be/index.php/docs/laravel-permission/v6/introduction).
 - [Iconos](https://heroicons.com/).
-- Alertas notificaciones [Documentacion](https://sweetalert2.github.io/).
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Alertas notificaciones con SweetAlert [Documentacion](https://sweetalert2.github.io/).
+- [Componentes Utiles](https://primevue.org/).
 - Database agnostic [schema migrations](https://laravel.com/docs/migrations).
 - [Robust background job processing](https://laravel.com/docs/queues).
 - [Real-time event broadcasting](https://laravel.com/docs/broadcasting).

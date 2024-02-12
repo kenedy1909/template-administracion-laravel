@@ -74,7 +74,7 @@
                     <InputLabel for="password" value="Contraseña" class="sr-only" />
 
                     <TextInput id="password" ref="passwordInput" v-model="form.password" type="password"
-                        class="mt-1 block w-3/4" placeholder="Contraseña" @keyup.enter="deleteUser" />
+                        class="mt-1 block w-3/4" placeholder="Contraseña" @keyup.enter="deleteRol" />
 
                     <InputError :message="form.errors.password" class="mt-2" />
                 </div>
@@ -83,8 +83,8 @@
                     <SecondaryButton @click="closeModal"> Cancelar </SecondaryButton>
 
                     <DangerButton class="ms-3" :class="{ 'opacity-25': form.processing }" :disabled="form.processing"
-                        @click="deleteUser">
-                        Delete Account
+                        @click="deleteRol">
+                        Eliminar rol
                     </DangerButton>
                 </div>
             </div>
@@ -126,7 +126,7 @@ const confirmUserDeletion = (id) => {
     confirmingDeletion.value = true;
     role_id.value = id;
 };
-const deleteUser = () => {
+const deleteRol = () => {
     form.delete(route('roles.destroy', role_id.value), {
         preserveScroll: true,
         onSuccess: () => {
@@ -179,21 +179,5 @@ const slicedRoles = computed(() => {
     );
     return filteredUsers.slice(start, end);
 });
-
-
-
-const confirmDelete = roleId => {
-    const rolEncontrado = props.roles.find(rol => rol.id === roleId);
-
-    if (confirm('¿Estás seguro de que desea eliminar la información del usuario ' + rolEncontrado.name)) {
-
-        router.delete(route('roles.destroy', roleId));
-        setTimeout(() => {
-            // Redireccionar usando Inertia
-            window.location.reload();
-        }, 2000);
-    }
-}
-
 
 </script>

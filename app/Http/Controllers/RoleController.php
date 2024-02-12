@@ -123,8 +123,6 @@ class RoleController extends Controller
         $role->save();
 
         $role->syncPermissions($request->input('permisos'));
-        $user->syncRoles($request->input('roles_user'));
-
         //Alert::info('Success', 'Rol has been updated !');
         return Redirect::route('roles.edit', $id)->with('message', 'Registro actualizado');
     }

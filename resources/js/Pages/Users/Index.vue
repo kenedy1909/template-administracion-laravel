@@ -56,6 +56,10 @@
                         </th>
                         <th
                             class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
+                            Roles
+                        </th>
+                        <th
+                            class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
                             Estado
                         </th>
                         <th
@@ -73,12 +77,18 @@
                             <p class="text-gray-900 whitespace-no-wrap">{{ user.email }}</p>
                         </td>
                         <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                            <span v-for="role in user.roles" :key="role.id"
+                                class="bg-indigo-100 text-indigo-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">
+                                {{ role.name }}
+                            </span>
+                        </td>
+                        <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                             <span v-if="user.estado == 'Activo'"
-                                class="bg-lime-500 text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-lime-500 dark:text-white">
+                                class="bg-lime-500 text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded">
                                 {{ user.estado }}
                             </span>
                             <span v-if="user.estado == 'Bloqueado'"
-                                class="bg-red-500 text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-500 dark:text-white">
+                                class="bg-red-500 text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-500">
                                 {{ user.estado }}
                             </span>
                         </td>
