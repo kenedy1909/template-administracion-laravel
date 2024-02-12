@@ -14,15 +14,17 @@ Starter Project | Inicio de proyecto con panel de administración hecho con Lara
 CRUD Usuarios
 CRUD Roles
 
+Con este template puedes iniciar cualquier proyecto que necesite administrar usuarios y permisos, con inicio de sesión, filtro de busqueda, alertas, y componentes utiles para tu proyecto.
+
 - [Laravel-permission](https://spatie.be/index.php/docs/laravel-permission/v6/introduction).
 - [Iconos](https://heroicons.com/).
 - Alertas notificaciones con SweetAlert [Documentacion](https://sweetalert2.github.io/).
 - [Componentes Utiles](https://primevue.org/).
 
 
-## Installation
+## Instalación
 ***
-Instalacion
+Clonar repositorio e instalar dependencias.
 ```
 $ git clone https://github.com/kenedy1909/template-administracion-laravel
 $ npm install
