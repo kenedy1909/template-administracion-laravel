@@ -46,7 +46,7 @@
             <table class="w-full whitespace-no-wrap">
                 <thead>
                     <tr class="border-b bg-gray-50 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
-                        <th
+                        <th colspan="2"
                             class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
                             Nombre
                         </th>
@@ -70,6 +70,10 @@
                 </thead>
                 <tbody>
                     <tr v-for="user in users.data" :key="user.id" class="text-gray-700">
+                        <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                            <Avatar :label="getInitials(user.name)" class="bg-indigo-200 text-indigo-800 text-xl"
+                                size="large" shape="circle" />
+                        </td>
                         <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                             <p class="text-gray-900 whitespace-no-wrap">{{ user.name }}</p>
                         </td>
@@ -119,6 +123,7 @@ import Pagination from '@/Components/Pagination.vue'
 import { Head } from '@inertiajs/vue3';
 import { router } from '@inertiajs/vue3'
 import SecondaryButton from "@/Components/SecondaryButton.vue";
+import Avatar from 'primevue/avatar';
 
 const props = defineProps({
     users: {
@@ -143,6 +148,19 @@ const handleEnterKey = () => {
             replace: true,
         }
     );
+};
+const getInitials = function (name) {
+    let parts = name.split(' ');
+    let initials = '';
+    let count = 0;
+
+    for (var i = 0; i < parts.length && count < 2; i++) {
+        if (parts[i].length > 0 && parts[i] !== '') {
+            initials += parts[i][0];
+            count++;
+        }
+    }
+    return initials;
 };
 watch(search, (value) => {
     console.log("Valor de búsqueda actualizado:", value)
