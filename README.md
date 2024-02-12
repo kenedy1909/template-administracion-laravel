@@ -18,9 +18,18 @@ CRUD Roles
 - [Iconos](https://heroicons.com/).
 - Alertas notificaciones con SweetAlert [Documentacion](https://sweetalert2.github.io/).
 - [Componentes Utiles](https://primevue.org/).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+
+
+## Installation
+***
+Instalacion
+```
+$ git clone https://github.com/kenedy1909/template-administracion-laravel
+$ npm install
+$ composer install
+$ php artisan migrate
+```
+
 
 ## About Laravel
 
