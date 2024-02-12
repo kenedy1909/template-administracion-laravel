@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules\Password;
+use App\Models\User;
 
 class PasswordController extends Controller
 {
@@ -21,6 +22,22 @@ class PasswordController extends Controller
         ]);
 
         $request->user()->update([
+            'password' => Hash::make($validated['password']),
+        ]);
+
+        return back();
+    }
+
+    /**
+     * Update the user's password.
+     */
+    public function updatePassUser(Request $request,$id_user): RedirectResponse
+    {
+        $validated = $request->validate([
+            'password' => ['required', Password::defaults(), 'confirmed'],
+        ]);
+        $usuario = User::findOrFail($id_user);
+        $usuario->update([
             'password' => Hash::make($validated['password']),
         ]);
 

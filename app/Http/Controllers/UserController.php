@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Redirect;
 use Spatie\Permission\Models\Role;
 use App\Models\User;
 use Inertia\Inertia;
+use DB;
 
 class UserController extends Controller
 {
@@ -31,7 +32,8 @@ class UserController extends Controller
 
     public function create()
     {
-        return Inertia::render('Users/Add');
+        $roles = Role::pluck('name', 'name')->all();
+        return Inertia::render('Users/Add',compact('roles'));
     }
 
     public function store(Request $request)
@@ -40,6 +42,7 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'roles_user' => 'required'
         ]);
 
         $user = User::create([
@@ -47,6 +50,7 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        $user->syncRoles($request->input('roles_user'));
 
         return to_route('users.index');
     }
@@ -72,5 +76,15 @@ class UserController extends Controller
         $user->fill($data)->save();
         $user->syncRoles($request->input('roles_user'));
         return Redirect::route('users.edit',$user->id);
+    }
+
+    public function destroy(Request $request,$id){
+
+        $request->validate([
+            'password' => ['required', 'current_password'],
+        ]);
+        DB::table("users")->where('id', $id)->delete();
+        return redirect()->route('users.index')
+            ->with('success', 'Recurso eliminado exitosamente');
     }
 }

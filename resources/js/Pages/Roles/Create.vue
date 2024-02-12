@@ -20,7 +20,7 @@ const form = useForm({
 });
 const submit = () => {
     form.post(route('roles.store'), {
-        onFinish: () => swal({
+        onSuccess: () => swal({
             title: "Registro Guardado",
             text: "El rol se ha registrado exitosamente",
             icon: "success"

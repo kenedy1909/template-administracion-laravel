@@ -48,6 +48,18 @@
                             v-model="form.password_confirmation" required autocomplete="new-password" />
                         <InputError class="mt-2" :message="form.errors.password_confirmation" />
 
+
+                    </div>
+                    <div>
+                        <InputLabel for="roles" value="Roles" />
+
+                        <div class="card flex justify-content-center">
+                            <MultiSelect id="roles" v-model="form.roles_user" display="chip" :options="Object.values(roles)"
+                                placeholder="Seleccione rol" :maxSelectedLabels="3" class="w-full md:w-20rem" />
+                        </div>
+                        <InputError class="mt-2" :message="form.errors.roles_user" />
+                    </div>
+                    <div>
                         <div class="mt-4 flex flex-col items-end">
                             <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                                 Registrar Usuario
@@ -72,20 +84,30 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
 import SecondaryButton from "@/Components/SecondaryButton.vue";
+import MultiSelect from 'primevue/multiselect';
 import { inject } from 'vue';
 
 const swal = inject('$swal');
+
+const props = defineProps({
+    roles: {
+        type: Object,
+        default: () => ({}),
+    }
+});
+
 const form = useForm({
     name: '',
     email: '',
     password: '',
     password_confirmation: '',
     terms: false,
+    roles_user: ''
 });
 
 const submit = () => {
     form.post(route('users.store'), {
-        onFinish: function () {
+        onSuccess: function () {
             form.reset('password', 'password_confirmation');
             swal({
                 title: "Registro Guardado",

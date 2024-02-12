@@ -74,7 +74,7 @@ const form = useForm({
 
                 <div class="card flex justify-content-center">
                     <MultiSelect id="roles" v-model="form.roles_user" display="chip" :options="Object.values(roles)"
-                        placeholder="Select Cities" :maxSelectedLabels="3" class="w-full md:w-20rem" />
+                        placeholder="Seleccione rol" :maxSelectedLabels="3" class="w-full md:w-20rem" />
                 </div>
                 <InputError class="mt-2" :message="form.errors.roles_user" />
             </div>
