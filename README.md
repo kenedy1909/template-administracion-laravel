@@ -19,7 +19,7 @@ Con este template puedes iniciar cualquier proyecto que necesite administrar usu
 - [Laravel-permission](https://spatie.be/index.php/docs/laravel-permission/v6/introduction).
 - [Iconos](https://heroicons.com/).
 - Alertas notificaciones con SweetAlert [Documentacion](https://sweetalert2.github.io/).
-- [Componentes Utiles](https://primevue.org/).
+- [Componentes Utilizados en el proyecto](https://primevue.org/).
 
 
 ## Instalación

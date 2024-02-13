@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email', 191)->unique();
             $table->enum('estado', ['Activo', 'Bloqueado'])->default('Activo'); // Campo 'estado' de tipo ENUM
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
