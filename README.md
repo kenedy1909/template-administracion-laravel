@@ -23,6 +23,8 @@ Con este template puedes iniciar cualquier proyecto que necesite administrar usu
 
 
 ## Instalación
+
+Debes tener acceso a una base de datos para cambiar la conexión en el laravel archivo env.
 ***
 Clonar repositorio e instalar dependencias.
 ```
