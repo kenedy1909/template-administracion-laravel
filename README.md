@@ -28,9 +28,9 @@ Debes tener acceso a una base de datos para cambiar la conexión en el laravel a
 ***
 Clonar repositorio e instalar dependencias.
 ```
-$ git clone https://github.com/kenedy1909/template-administracion-laravel
-$ npm install
-$ composer install
+git clone https://github.com/kenedy1909/template-administracion-laravel
+npm install
+composer install
 ```
 
 Realizar conexión a base de datos para realizar las migraciones. Abrir .env del proyecto.
@@ -45,26 +45,26 @@ DB_PASSWORD= Contraseña
 ```
 Una vez realizado el paso anterior, ejecutamos las migraciones
 ```
-$ php artisan migrate
+php artisan migrate
 
 ```
 Realizamos la insersión de datos (permisos, roles y usuario administrador) para ingresar al proyecto.
 ```
-$ php artisan db:seed  PermissionTableSeeder 
-$ php artisan db:seed  CreateAdminUserSeeder  
+php artisan db:seed  PermissionTableSeeder 
+php artisan db:seed  CreateAdminUserSeeder  
 
 ```
 
 Ejecutar el proyecto en desarrollo. Abrir dos terminales en su VScode.
 NPM
 ```
-$ npm run dev   
+npm run dev   
 
 ```
 
 Segunda terminal. artisan serve 
 ```
-$ php artisan serve 
+php artisan serve 
 
 ```
 
