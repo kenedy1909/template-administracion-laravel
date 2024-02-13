@@ -13,7 +13,20 @@ use Inertia\Inertia;
 use DB;
 
 class UserController extends Controller
+
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    function __construct()
+    {
+        $this->middleware('permission:usuarios-listar|usuarios-crear|usuarios-editar|usuarios-eliminar', ['only' => ['index', 'store']]);
+        $this->middleware('permission:usuarios-crear', ['only' => ['create', 'store']]);
+        $this->middleware('permission:usuarios-editar', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:usuarios-eliminar', ['only' => ['destroy']]);
+    }
     public function index()
     {
         return Inertia::render('Users/Index', 
