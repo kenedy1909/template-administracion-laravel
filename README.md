@@ -31,7 +31,6 @@ Clonar repositorio e instalar dependencias.
 $ git clone https://github.com/kenedy1909/template-administracion-laravel
 $ npm install
 $ composer install
-$ php artisan migrate
 ```
 
 Realizar conexión a base de datos para realizar las migraciones. Abrir .env del proyecto.
@@ -39,12 +38,35 @@ Realizar conexión a base de datos para realizar las migraciones. Abrir .env del
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE= Nombre de su base de datps
+DB_DATABASE= Nombre de su base de datos
 DB_USERNAME= Nombre de usuario
 DB_PASSWORD= Contraseña 
 
 ```
+Una vez realizado el paso anterior, ejecutamos las migraciones
+```
+$ php artisan migrate
 
+```
+Realizamos la insersión de datos (permisos, roles y usuario administrador) para ingresar al proyecto.
+```
+$ php artisan db:seed  PermissionTableSeeder 
+$ php artisan db:seed  CreateAdminUserSeeder  
+
+```
+
+Ejecutar el proyecto en desarrollo. Abrir dos terminales en su VScode.
+NPM
+```
+$ npm run dev   
+
+```
+
+Segunda terminal. artisan serve 
+```
+$ php artisan serve 
+
+```
 
 ## About Laravel
 
