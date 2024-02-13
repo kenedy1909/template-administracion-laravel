@@ -34,6 +34,17 @@ $ composer install
 $ php artisan migrate
 ```
 
+Realizar conexión a base de datos para realizar las migraciones. Abrir .env del proyecto.
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE= Nombre de su base de datps
+DB_USERNAME= Nombre de usuario
+DB_PASSWORD= Contraseña 
+
+```
+
 
 ## About Laravel
 
