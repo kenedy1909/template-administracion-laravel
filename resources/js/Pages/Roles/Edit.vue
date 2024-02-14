@@ -50,9 +50,6 @@ watch(
         <template #header>
             <!-- <Link class="text-sky-400 hover:text-sky-600" href="/roles"> Roles </Link> / {{ form.name }} -->
 
-
-
-
         </template>
         <div class="flex flex-col bg-white border shadow-sm rounded-xl w-2/4">
             <div class="bg-gray-100 border-b rounded-t-xl py-3 px-4 md:py-4 md:px-5 grid grid-cols-2 gap-4">

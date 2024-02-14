@@ -46,10 +46,18 @@ class LoginRequest extends FormRequest
 
         // Verificar si el usuario existe y está activo
         $user = User::where('email', $credentials['email'])
-                    ->where('estado', 'Activo') // Asegurarse de que el usuario esté activo
+/*                     ->where('estado', 'Activo') // Asegurarse de que el usuario esté activo */
                     ->first();
 
         if (! $user) {
+            RateLimiter::hit($this->throttleKey());
+
+            throw ValidationException::withMessages([
+                'email' => 'El usuario con este correo electronico no existe',
+            ]);
+        }
+
+        if ($user->estado = 'Bloqueado') {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([

@@ -3,7 +3,7 @@
 
     <GuestLayout>
         <Link href="/" class="flex items-center justify-center">
-        <ApplicationLogo class="h-20 w-20 fill-current text-gray-500" />
+        <ApplicationLogo class="fill-current text-gray-500" />
         </Link>
 
         <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
