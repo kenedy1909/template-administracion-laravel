@@ -6,7 +6,7 @@
             Nuevo usuario
         </template>
 
-        <div class="flex flex-col bg-white border shadow-sm rounded-xl w-2/4">
+        <div class="flex flex-col bg-white border shadow-sm rounded-xl lg:w-1/2 md:w-2/3">
             <div class="bg-gray-100 border-b rounded-t-xl py-3 px-4 md:py-4 md:px-5 grid grid-cols-2 gap-4">
                 <h3 class="mt-1 text-gray-500">
                     Nuevo Usuario
@@ -21,7 +21,7 @@
 
             </div>
             <div class="p-4 md:p-5">
-                <form @submit.prevent="submit" class="grid grid-cols-2 gap-4">
+                <form @submit.prevent="submit" class="grid lg:grid-cols-2 gap-4">
                     <div>
                         <InputLabel for="name" value="Nombre" />
                         <TextInput id="name" type="text" class="mt-1 block w-full" v-model="form.name" required autofocus

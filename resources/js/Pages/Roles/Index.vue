@@ -7,7 +7,7 @@
         </template>
 
 
-        <div class=" w-2/4 overflow-x-scroll md:overflow-x-auto">
+        <div class="lg:w-1/2 md:w-2/3 overflow-x-scroll md:overflow-x-auto">
             <div class="text-right p-4">
                 <PrimaryLink :href="route('roles.create')">
                     Agregar
@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <div class=" w-2/4 overflow-x-scroll md:overflow-x-auto rounded-lg shadow">
+        <div class="lg:w-1/2 md:w-2/3 overflow-x-scroll md:overflow-x-auto rounded-lg shadow">
             <table class="w-full whitespace-no-wrap overflow-x-auto">
                 <thead>
                     <tr class="border-b bg-gray-50 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
