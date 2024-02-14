@@ -57,7 +57,7 @@ class LoginRequest extends FormRequest
             ]);
         }
 
-        if ($user->estado = 'Bloqueado') {
+        if ($user->estado == 'Bloqueado') {
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
