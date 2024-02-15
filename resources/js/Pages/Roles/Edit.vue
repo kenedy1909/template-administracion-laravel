@@ -57,11 +57,9 @@ watch(
                     Editar Rol
                 </h3>
                 <div class="text-right">
-                    <a :href="route('roles.index')">
-                        <SecondaryButton>
-                            Regresar
-                        </SecondaryButton>
-                    </a>
+                    <SecondaryButton :href="route('roles.index')">
+                        Regresar
+                    </SecondaryButton>
                 </div>
 
             </div>

@@ -51,11 +51,9 @@ watch(
                     Nuevo Rol
                 </h3>
                 <div class="text-right">
-                    <a :href="route('roles.index')">
-                        <SecondaryButton>
-                            Regresar
-                        </SecondaryButton>
-                    </a>
+                    <SecondaryButton :href="route('roles.index')">
+                        Regresar
+                    </SecondaryButton>
                 </div>
 
             </div>
@@ -72,6 +70,7 @@ watch(
                         </div>
                         <div class="sm:mx-2 sm:w-full">
                             <InputLabel for="name" value="Permisos"></InputLabel>
+                            <InputError :message="form.errors.permisos" class="mt-2"></InputError>
                             <MultiCheckbox :name="permisos" v-model:value="form.permisos" :options="permission" />
                             <PrimaryButton :disabled="form.processing" class="my-2">
                                 <i class="fa-solid fa-save"></i> Registrar

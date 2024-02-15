@@ -6,7 +6,7 @@
             Usuarios
         </template>
 
-        <div class="inline-block min-w-full overflow-hidden mb-3 grid grid-cols-3 gap-4">
+        <div class="inline-block min-w-full overflow-hidden mb-3 grid md:grid-cols-3 gap-4">
             <div>
                 <select id="estado_users" name="estado_users" v-model="estado_users" @change="handleEnterKey"
                     class="block w-full px-4 py-3 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500">
@@ -42,75 +42,80 @@
 
 
         </div>
-        <div class="inline-block min-w-full overflow-hidden rounded-lg shadow">
-            <table class="w-full whitespace-no-wrap">
-                <thead>
-                    <tr class="border-b bg-gray-50 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
-                        <th colspan="2"
-                            class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
-                            Nombre
-                        </th>
-                        <th
-                            class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
-                            Email
-                        </th>
-                        <th
-                            class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
-                            Roles
-                        </th>
-                        <th
-                            class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
-                            Estado
-                        </th>
-                        <th
-                            class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
-                            Acciones
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="user in users.data" :key="user.id" class="text-gray-700">
-                        <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                            <Avatar :label="getInitials(user.name)" class="bg-indigo-200 text-indigo-800 text-xl"
-                                size="large" shape="circle" />
-                        </td>
-                        <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                            <p class="text-gray-900 whitespace-no-wrap">{{ user.name }}</p>
-                        </td>
-                        <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                            <p class="text-gray-900 whitespace-no-wrap">{{ user.email }}</p>
-                        </td>
-                        <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                            <span v-for="role in user.roles" :key="role.id"
-                                class="bg-indigo-100 text-indigo-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">
-                                {{ role.name }}
-                            </span>
-                        </td>
-                        <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                            <span v-if="user.estado == 'Activo'"
-                                class="bg-lime-500 text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded">
-                                {{ user.estado }}
-                            </span>
-                            <span v-if="user.estado == 'Bloqueado'"
-                                class="bg-red-500 text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-500">
-                                {{ user.estado }}
-                            </span>
-                        </td>
-                        <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
-                            <a :href="route('users.edit', user.id)">
-                                <SecondaryButton>
-                                    Editar
-                                </SecondaryButton>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div class="flex flex-col items-center border-t bg-white px-5 py-5 xs:flex-row xs:justify-between">
-                <pagination :links="users.links" />
+        <div class="flex flex-col overflow-x-auto">
+            <div class="inline-block rounded-lg shadow">
+                <div class="inline-block min-w-full py-2">
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full whitespace-no-wrap ">
+                            <thead>
+                                <tr
+                                    class="border-b bg-gray-50 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+                                    <th colspan="2"
+                                        class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
+                                        Nombre
+                                    </th>
+                                    <th
+                                        class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
+                                        Email
+                                    </th>
+                                    <th
+                                        class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
+                                        Roles
+                                    </th>
+                                    <th
+                                        class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
+                                        Estado
+                                    </th>
+                                    <th
+                                        class="border-b-2 border-gray-200 bg-gray-100 px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
+                                        Acciones
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="user in users.data" :key="user.id" class="text-gray-700">
+                                    <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                        <Avatar :label="getInitials(user.name)"
+                                            class="bg-indigo-200 text-indigo-800 text-xl" size="large" shape="circle" />
+                                    </td>
+                                    <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                        <p class="text-gray-900 whitespace-no-wrap">{{ user.name }}</p>
+                                    </td>
+                                    <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                        <p class="text-gray-900 whitespace-no-wrap">{{ user.email }}</p>
+                                    </td>
+                                    <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                        <span v-for="role in user.roles" :key="role.id"
+                                            class="bg-indigo-100 text-indigo-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">
+                                            {{ role.name }}
+                                        </span>
+                                    </td>
+                                    <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                        <span v-if="user.estado == 'Activo'"
+                                            class="bg-lime-500 text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded">
+                                            {{ user.estado }}
+                                        </span>
+                                        <span v-if="user.estado == 'Bloqueado'"
+                                            class="bg-red-500 text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-500">
+                                            {{ user.estado }}
+                                        </span>
+                                    </td>
+                                    <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
+                                        <SecondaryButton :href="route('users.edit', user.id)">
+                                            Editar
+                                        </SecondaryButton>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="flex flex-col items-center border-t bg-white px-5 py-5 xs:flex-row xs:justify-between">
+            <pagination :links="users.links" />
+        </div>
+
     </AuthenticatedLayout>
 </template>
 

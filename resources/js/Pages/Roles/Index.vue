@@ -36,11 +36,10 @@
                         </td>
                         <td
                             class="inline-flex w-full border-b border-gray-200 bg-white sm:px-5 sm:py-5 p-2 sm:text-sm text-xs">
-                            <a :href="route('roles.edit', role.id)" class="mr-2">
-                                <SecondaryButton>
-                                    Editar
-                                </SecondaryButton>
-                            </a>
+
+                            <SecondaryButton :href="route('roles.edit', role.id)" class="mr-2">
+                                Editar
+                            </SecondaryButton>
 
                             <DangerButton @click="confirmUserDeletion(role.id)">Eliminar</DangerButton>
 

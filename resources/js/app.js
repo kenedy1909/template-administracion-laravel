@@ -25,6 +25,8 @@ createInertiaApp({
             .mount(el);
     },
     progress: {
-        color: '#4B5563',
+        color: '#0ea5e9',
+        // Whether the NProgress spinner will be shown...
+        showSpinner: true,
     },
 });

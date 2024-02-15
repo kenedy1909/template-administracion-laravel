@@ -1,5 +1,5 @@
 <template>
-    <Head title="Log in" />
+    <Head title="Iniciar Sesión" />
 
     <GuestLayout>
         <Link href="/" class="flex items-center justify-center">
