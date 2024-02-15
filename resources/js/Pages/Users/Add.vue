@@ -12,11 +12,9 @@
                     Nuevo Usuario
                 </h3>
                 <div class="text-right">
-                    <a :href="route('users.index')">
-                        <SecondaryButton>
-                            Regresar
-                        </SecondaryButton>
-                    </a>
+                    <SecondaryButton :href="route('users.index')">
+                        Regresar
+                    </SecondaryButton>
                 </div>
 
             </div>
