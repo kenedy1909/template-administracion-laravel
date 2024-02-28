@@ -66,9 +66,6 @@ class Handler extends ExceptionHandler
             return response()->json(['error' => 'Modelo no encontrado'], Response::HTTP_NOT_FOUND);
         }
 
-        if ($exception instanceof ValidationException) {
-            return response()->json(['error' => $exception->validator->errors()], Response::HTTP_UNPROCESSABLE_ENTITY);
-        }
 
         if ($exception instanceof AuthenticationException) {
             return response()->json(['error' => 'No autenticado'], Response::HTTP_UNAUTHORIZED);
