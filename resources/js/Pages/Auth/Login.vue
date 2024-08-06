@@ -20,28 +20,26 @@
 
             <div class="mt-3">
                 <InputLabel for="password" value="Contraseña" />
-                <TextInput id="password" type="password" class="mt-1 block w-full" v-model="form.password" required
-                    autocomplete="current-password" />
+                <Password id="password" class="mt-1 w-full" v-model="form.password" :feedback="false" variant="filled" required toggleMask />
                 <InputError class="mt-2" :message="form.errors.password" />
             </div>
 
             <div class="mt-4 flex justify-between">
                 <label class="inline-flex items-center">
                     <Checkbox name="remember" v-model:checked="form.remember" />
-                    <span class="mx-2 text-sm text-gray-600">Recordarme</span>
+                    <span class="mx-2 text-sm text-zinc-600">Recordarme</span>
                 </label>
-
-                <Link v-if="canResetPassword" :href="route('password.request')"
-                    class="text-sm text-gray-600 underline hover:text-gray-900">
-                ¿Olvidaste tu contraseña?
-                </Link>
             </div>
 
             <div class="mt-6">
-                <PrimaryButton class="w-full justify-center flex" :class="{ 'opacity-25': form.processing }"
-                    :disabled="form.processing">
-                    Iniciar Sesión
-                </PrimaryButton>
+                <Button
+                    type="button"
+                    :label="'Iniciar Sesión'"
+                    :loading="loading"
+                    @click="submit()"
+                    :disabled="form.processing"
+                    class="w-full bg-zinc-900"
+                />
             </div>
         </form>
     </GuestLayout>
@@ -53,9 +51,11 @@ import Checkbox from '@/Components/Checkbox.vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
+import { ref} from "vue";
+import Password from 'primevue/password';
+import Button from 'primevue/button';
 
 defineProps({
     canResetPassword: Boolean,
@@ -68,9 +68,23 @@ const form = useForm({
     remember: false
 });
 
+// Botón de login
+const loading = ref(false);
+
 const submit = () => {
-    form.post(route('login'), {
-        onFinish: () => form.reset('password'),
-    });
+    loading.value = true;
+    setTimeout(() => {
+        form.post(route("login"), {
+            onFinish: () => {
+                form.reset("password"), (loading.value = false);
+            },
+        });
+    }, 1000);
 };
 </script>
+<style>
+.p-password-input{
+    width: 100% !important;
+    border: solid 0.5px;
+}
+</style>

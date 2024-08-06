@@ -1,5 +1,5 @@
 <template>
-    <header class="flex items-center justify-between border-b-4 border-sky-600 bg-white px-6 py-4">
+    <header class="flex items-center justify-between border-b-4 border-zinc-700 bg-white px-3 py-3">
         <div class="flex items-center">
             <button @click="$page.props.showingMobileMenu = !$page.props.showingMobileMenu"
                 class="text-gray-500 focus:outline-none lg:hidden">
@@ -11,10 +11,12 @@
         </div>
 
         <div class="flex items-center">
+            <div class="mr-6">
+            </div>
             <dropdown>
                 <template #trigger>
-                    <button @click="dropdownOpen = !dropdownOpen" class="relative block overflow-hidden">
-                        {{ $page.props.auth.user.name }}
+                    <button @click="dropdownOpen = !dropdownOpen" class="flex overflow-hidden">
+                        <UserCircleIcon class="h-6 w-6 mr-2"> </UserCircleIcon>{{ $page.props.auth.user.name }}
                     </button>
                 </template>
 
@@ -29,10 +31,38 @@
                 </template>
             </dropdown>
         </div>
+        
     </header>
+    <loading v-model:active="isLoading" :width="170" :height="170" :background-color="'#fff'" :opacity="1"
+        color="#0e7490" :can-cancel="false" :is-full-page="true" />
 </template>
 
 <script setup>
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
+import { UserCircleIcon } from "@heroicons/vue/24/outline";
+import { ref } from "vue";
+import { useForm } from '@inertiajs/vue3';
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/css/index.css';
+const visible = ref(false);
+const isLoading = ref(false);
+const form = useForm({
+    id_sc: '',
+});
+
+
+const submitSendSucursal = (id_sc) => {
+    isLoading.value = true;
+    form.id_sc = id_sc;
+    form.post(route('changesucur'), {
+        onSuccess: function () {
+            form.reset('nombre');
+            visible.value = false;
+            setTimeout(() => {
+                isLoading.value = false;
+            }, "2000");
+        }
+    });
+};
 </script>

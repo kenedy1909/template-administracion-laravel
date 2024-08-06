@@ -5,58 +5,62 @@
         <template #header>
             Roles del sistema
         </template>
+        <div class="flex justify-center w-full">
+            <div class="lg:w-2/4 md:w-full sm:w-full">
+                <div class="overflow-x-scroll md:overflow-x-auto">
+                    <div class="text-right p-4">
+                        <PrimaryLink :href="route('roles.create')">
+                            Agregar
+                        </PrimaryLink>
+                    </div>
+                </div>
 
+                <div class="overflow-x-scroll md:overflow-x-auto rounded-lg shadow">
+                    <table class="w-full whitespace-no-wrap overflow-x-auto">
+                        <thead>
+                            <tr class="border-b bg-gray-50 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
+                                <th
+                                    class="border-b-2 border-gray-200 bg-gray-100 sm:px-5 sm:py-3 p-2 text-center text-xs font-semibold uppercase tracking-wider text-gray-600">
+                                    Nombre
+                                </th>
+                                <th
+                                    class="border-b-2 border-gray-200 bg-gray-100 sm:px-5 sm:py-3 p-2 text-center text-xs font-semibold uppercase tracking-wider text-gray-600">
+                                    Acciones
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr v-for="role in slicedRoles" :key="role.id" class="text-gray-700">
+                                <td class="border-b border-gray-200 bg-white sm:px-5 sm:py-5 p-2 sm:text-sm text-xs text-center">
+                                    <p class="text-gray-900 whitespace-no-wrap">{{ role.name }}</p>
+                                </td>
+                                <td
+                                    class="inline-flex w-full justify-center  border-b border-gray-200 bg-white sm:px-5 sm:py-5 p-2 sm:text-sm text-xs">
 
-        <div class="lg:w-1/2 md:w-2/3 overflow-x-scroll md:overflow-x-auto">
-            <div class="text-right p-4">
-                <PrimaryLink :href="route('roles.create')">
-                    Agregar
-                </PrimaryLink>
+                                    <SecondaryButton :href="route('roles.edit', role.id)" class="mr-2">
+                                        Editar
+                                    </SecondaryButton>
+
+                                    <DangerButton @click="confirmUserDeletion(role.id)">Eliminar</DangerButton>
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div
+                        class="flex items-center border-b bg-gray-50 px-5 py-2 xs:flex-row justify-between text-gray-500 text-xs font-semibold">
+                        <button class="hover:scale-125 transition duration-500 cursor-pointer" @click="previousPage"
+                            :disabled="currentPage === 0"><i class="fa-solid fa-arrow-left"></i></button>
+                        <p>Pagina {{ currentPage + 1 }} de {{ totalPages }}</p>
+                        <button class="hover:scale-125 transition duration-500 cursor-pointer" @click="nextPage"
+                            :disabled="currentPage === totalPages - 1"><i class="fa-solid fa-arrow-right"></i></button>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="lg:w-1/2 md:w-2/3 overflow-x-scroll md:overflow-x-auto rounded-lg shadow">
-            <table class="w-full whitespace-no-wrap overflow-x-auto">
-                <thead>
-                    <tr class="border-b bg-gray-50 text-left text-xs font-semibold uppercase tracking-wide text-gray-500">
-                        <th
-                            class="border-b-2 border-gray-200 bg-gray-100 sm:px-5 sm:py-3 p-2 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
-                            Nombre
-                        </th>
-                        <th
-                            class="border-b-2 border-gray-200 bg-gray-100 sm:px-5 sm:py-3 p-2 text-left text-xs font-semibold uppercase tracking-wider text-gray-600">
-                            Acciones
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr v-for="role in slicedRoles" :key="role.id" class="text-gray-700">
-                        <td class="border-b border-gray-200 bg-white sm:px-5 sm:py-5 p-2 sm:text-sm text-xs">
-                            <p class="text-gray-900 whitespace-no-wrap">{{ role.name }}</p>
-                        </td>
-                        <td
-                            class="inline-flex w-full border-b border-gray-200 bg-white sm:px-5 sm:py-5 p-2 sm:text-sm text-xs">
-
-                            <SecondaryButton :href="route('roles.edit', role.id)" class="mr-2">
-                                Editar
-                            </SecondaryButton>
-
-                            <DangerButton @click="confirmUserDeletion(role.id)">Eliminar</DangerButton>
-
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <div
-                class="flex items-center border-b bg-gray-50 px-5 py-2 xs:flex-row justify-between text-gray-500 text-xs font-semibold">
-                <button class="hover:scale-125 transition duration-500 cursor-pointer" @click="previousPage"
-                    :disabled="currentPage === 0"><i class="fa-solid fa-arrow-left"></i></button>
-                <p>Pagina {{ currentPage + 1 }} de {{ totalPages }}</p>
-                <button class="hover:scale-125 transition duration-500 cursor-pointer" @click="nextPage"
-                    :disabled="currentPage === totalPages - 1"><i class="fa-solid fa-arrow-right"></i></button>
-            </div>
-        </div>
+        
         <Modal :show="confirmingDeletion" @close="closeModal">
             <div class="p-6">
                 <h2 class="text-lg font-medium text-gray-900">

@@ -30,7 +30,7 @@
                         class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-0 focus:border-transparent"
                         placeholder="Busqueda de usuarios" required>
                     <button type="submit" @click="handleEnterKey"
-                        class="text-white absolute end-2.5 bottom-2.5 bg-sky-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-sky-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buscar</button>
+                        class="text-white absolute end-2.5 bottom-2.5 bg-zinc-900 hover:bg-zinc-950 focus:ring-4 focus:outline-none focus:ring-zinc-900 font-medium rounded-lg text-sm px-4 py-2 dark:bg-zinc-900 dark:hover:bg-zinc-950 dark:focus:ring-zinc-800">Buscar</button>
                 </div>
             </div>
 
@@ -39,7 +39,6 @@
                     Agregar
                 </PrimaryLink>
             </div>
-
 
         </div>
         <div class="flex flex-col overflow-x-auto">
@@ -73,10 +72,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="user in users.data" :key="user.id" class="text-gray-700">
+                                <tr v-for="user in users.data" :key="user.id" class="text-zinc-700">
                                     <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                                         <Avatar :label="getInitials(user.name)"
-                                            class="bg-indigo-200 text-indigo-800 text-xl" size="large" shape="circle" />
+                                            class="bg-indigo-200 text-zinc-800 text-xl" size="large" shape="circle" />
+                                        <DatePicker v-model="date" />
                                     </td>
                                     <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                                         <p class="text-gray-900 whitespace-no-wrap">{{ user.name }}</p>
@@ -86,7 +86,7 @@
                                     </td>
                                     <td class="border-b border-gray-200 bg-white px-5 py-5 text-sm">
                                         <span v-for="role in user.roles" :key="role.id"
-                                            class="bg-indigo-100 text-indigo-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">
+                                            class="bg-zinc-200 text-zinc-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded">
                                             {{ role.name }}
                                         </span>
                                     </td>
@@ -129,6 +129,7 @@ import { Head } from '@inertiajs/vue3';
 import { router } from '@inertiajs/vue3'
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 import Avatar from 'primevue/avatar';
+import DatePicker from 'primevue/datepicker';
 
 const props = defineProps({
     users: {
@@ -140,7 +141,6 @@ const props = defineProps({
         default: () => ({}),
     },
 });
-
 // pass filters in search
 let search = ref(props.filters.search);
 let estado_users = ref(props.filters.estado_users ?? "");
@@ -170,4 +170,6 @@ const getInitials = function (name) {
 watch(search, (value) => {
     console.log("Valor de búsqueda actualizado:", value)
 });
+
+const date = ref();
 </script>

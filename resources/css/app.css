@@ -13,3 +13,57 @@
     @tailwind components;
     @tailwind utilities;
 }
+
+
+:root {
+    color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: light;
+    }
+}
+
+
+/* Personalización del scroll */
+::-webkit-scrollbar {
+    overflow: auto !important;
+}
+
+::-webkit-scrollbar {
+    width: 8px !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #b8b6b6 !important;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1 !important;
+}
+
+.p-card-body {
+    padding: 12px 20px !important;
+}
+
+/* Estilo para el scrollbar */
+::-webkit-scrollbar {
+    /* Ancho del scrollbar vertical */
+    height: 8px;
+    /* Altura del scrollbar horizontal */
+}
+
+/* Estilo para el scrollbar thumb */
+::-webkit-scrollbar-thumb {
+    background-color: #888;
+    /* Color del scrollbar thumb */
+    border-radius: 6px;
+    /* Radio de borde del scrollbar thumb */
+}
+
+/* Estilo para el scrollbar track */
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    /* Color del scrollbar track */
+}
